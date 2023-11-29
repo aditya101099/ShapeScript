@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -64,7 +64,12 @@
                                         </barButtonItem>
                                         <rightBarButtonItems>
                                             <barButtonItem title="Info" image="square.and.arrow.up" catalog="system" id="ljV-pr-4b0" userLabel="Export Button"/>
-                                            <barButtonItem title="Camera" image="camera" catalog="system" id="PxS-9e-FYL"/>
+                                            <barButtonItem title="AR" image="camera" catalog="system" id="FDO-oT-lZQ">
+                                                <connections>
+                                                    <action selector="tappedARButton" destination="M2k-L8-Olo" id="ocx-6h-mlQ"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem title="Camera" image="rotate.3d" catalog="system" id="PxS-9e-FYL"/>
                                             <barButtonItem title="Info" image="info.circle" catalog="system" id="zzp-j3-Tsu">
                                                 <connections>
                                                     <action selector="showModelInfo" destination="M2k-L8-Olo" id="9VE-4L-lqD"/>
@@ -95,6 +100,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="arButton" destination="FDO-oT-lZQ" id="GAY-W9-8ur"/>
                         <outlet property="cameraButton" destination="PxS-9e-FYL" id="VOi-Xt-nno"/>
                         <outlet property="closeButton" destination="4uK-Ny-2h9" id="FIZ-u7-VTP"/>
                         <outlet property="containerView" destination="RpZ-Bw-gc3" id="21M-8J-p2T"/>
@@ -172,11 +178,12 @@
     <resources>
         <image name="camera" catalog="system" width="128" height="93"/>
         <image name="info.circle" catalog="system" width="128" height="123"/>
-        <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
-        <image name="square.and.pencil" catalog="system" width="128" height="113"/>
+        <image name="rotate.3d" catalog="system" width="128" height="123"/>
+        <image name="square.and.arrow.up" catalog="system" width="108" height="128"/>
+        <image name="square.and.pencil" catalog="system" width="128" height="121"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
         <systemColor name="labelColor">
-            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

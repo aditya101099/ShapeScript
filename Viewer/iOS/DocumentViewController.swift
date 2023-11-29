@@ -31,6 +31,7 @@ class DocumentViewController: UIViewController {
     @IBOutlet private var closeButton: UIBarButtonItem!
     @IBOutlet private var infoButton: UIBarButtonItem!
     @IBOutlet private var cameraButton: UIBarButtonItem!
+    @IBOutlet private var arButton: UIBarButtonItem!
     @IBOutlet private var editButton: UIBarButtonItem!
     @IBOutlet private var navigationBar: UINavigationBar!
 
@@ -487,6 +488,12 @@ class DocumentViewController: UIViewController {
         viewController.modalPresentationStyle = .pageSheet
         let navigationController = UINavigationController(rootViewController: viewController)
         present(navigationController, animated: true, completion: nil)
+    }
+    
+    @IBAction func tappedARButton() {
+        let arDocumentViewController = ARDocumentViewController(model: scnScene.rootNode)
+        let navigationController = UINavigationController(rootViewController: arDocumentViewController)
+        present(navigationController, animated: true)
     }
 
     @IBAction func resetCamera() {

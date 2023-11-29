@@ -34,6 +34,10 @@ class DocumentViewController: NSViewController {
             guard let errorMessage = errorMessage else {
                 errorScrollView.isHidden = true
                 return
+                @IBAction func arButton(_ sender: Any) {
+                }
+                @IBAction func arButton(_ sender: Any) {
+                }
             }
             errorTextView.textContainerInset = CGSize(width: 20, height: 20)
             errorTextView.textStorage?.setAttributedString(errorMessage)
