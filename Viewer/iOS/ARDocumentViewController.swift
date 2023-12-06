@@ -26,11 +26,22 @@ class ARDocumentViewController: UIViewController, ARSCNViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
-        arSceneView.frame = view.bounds
         
+        // AR view setup
+        arSceneView.frame = view.bounds
         arSceneView.delegate = self
         view.addSubview(arSceneView)
+        
+        // Close button  configuration
+        let closeButton = UIButton(type: .close)
+        closeButton.addTarget(self, action: #selector(closeButtonTapped), for: .touchUpInside)
+        closeButton.isUserInteractionEnabled = true
+        closeButton.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(closeButton)
+        NSLayoutConstraint.activate([
+            closeButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            closeButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 48)
+         ])
         
         // Create a new ARWorldTrackingConfiguration
         let configuration = ARWorldTrackingConfiguration()
@@ -44,6 +55,10 @@ class ARDocumentViewController: UIViewController, ARSCNViewDelegate {
         // Add a tap gesture recognizer to handle surface selection
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
         arSceneView.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func closeButtonTapped() {
+        self.dismiss(animated: true)
     }
     
     // Handle tap on the AR scene to place all models
@@ -62,7 +77,7 @@ class ARDocumentViewController: UIViewController, ARSCNViewDelegate {
                 if let match = results.first {
                     let t = match.worldTransform
                     let position = SCNVector3(x: t.columns.3.x, y: t.columns.3.y, z: t.columns.3.z)
-                    let targetSize: CGFloat = 0.5
+                    let targetSize: CGFloat = 0.1
                     let newNode = model.clone()
                     newNode.position = position
                     // Calculate the bounding box of the model

@@ -493,6 +493,7 @@ class DocumentViewController: UIViewController {
     @IBAction func tappedARButton() {
         let arDocumentViewController = ARDocumentViewController(model: scnScene.rootNode)
         let navigationController = UINavigationController(rootViewController: arDocumentViewController)
+        navigationController.modalPresentationStyle = .fullScreen
         present(navigationController, animated: true)
     }
 
